@@ -25,19 +25,18 @@ function addTask(arr){
         identity++;
     })
 }
-let i = 0;
 function clickAdd(){
     if(input.value != ""){
         let obj = {
-            id:i,
+            id: arrOfTasks.length,
             name:input.value,
             done:false,
         }
-        i++;
         arrOfTasks.push(obj);
         addTask(arrOfTasks);
         input.value = "";
         allLength.innerHTML = arrOfTasks.length;
+        savetolocalstorage(arrOfTasks);
     }
 }
 addBtn.addEventListener("click" , clickAdd);
@@ -53,6 +52,7 @@ function deleteTask(e){
         arrOfTasks.forEach((task , index) => {
             task.id = index;
         })
+        savetolocalstorage(arrOfTasks);
         allLength.innerHTML = arrOfTasks.length;
     }
 }
@@ -79,6 +79,7 @@ function updateTask(e){
                 }
             })
         }
+        savetolocalstorage(arrOfTasks);
     }
 }
 content.addEventListener("click" , updateTask);
@@ -123,3 +124,12 @@ function filteringNotDone(arr){
     activeLength.innerHTML = arr.length;
 }
 // end filtering
+// start localstorage
+function savetolocalstorage(arr){
+    localStorage.setItem("tasks" , JSON.stringify(arr));
+}
+window.addEventListener("load" , function(e){
+    arrOfTasks = JSON.parse(this.localStorage.getItem("tasks"));
+    addTask(arrOfTasks);
+})
+// end localstorage
