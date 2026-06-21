@@ -21,3 +21,167 @@
     --Blue-500: hsl(220, 98%, 61%);
     --Check-Background: linear-gradient hsl(192, 100%, 67%) to hsl(280, 87%, 65%);
 }
+body{
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    height: 100vh;
+    background-image: linear-gradient(to bottom right , skyblue , white);
+}
+.container{
+    width: 700px;
+    max-width: 100%;
+    padding: 20px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    .header{
+        h1{
+            color: var(--Navy-950);
+            font-weight: bold;
+            font-size: 35px;
+        }
+        p{
+            text-align: center;
+            line-height: 1.6;
+            color: var(--Navy-850);
+        }
+    }
+    .input{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 5px;
+        button{
+            flex-grow: 1;
+            height: 40px;
+            font-size: 20px;
+            line-height: 40px;
+            color: white;
+            background-color: forestgreen;
+            border: 2px solid forestgreen;
+            cursor: pointer;
+            transition: 0.5s;
+            border-top-right-radius: 4px;
+            border-bottom-right-radius: 4px;
+            @media (max-width:768px) {
+                font-size: 14px;
+            }
+            &:active{
+                transform: scale(0.9);
+            }
+        }
+        input{
+            padding: 10px;
+            height: 40px;
+            font-size: 20px;
+            flex-grow: 1;
+            border-top-left-radius: 4px;
+            border-bottom-left-radius: 4px;
+            border: 2px solid forestgreen;
+            &::placeholder{
+                font-size: 14px;
+            }
+            &:focus{
+                outline: none;
+            }
+        }
+    }
+    .content{
+        display: flex;
+        flex-direction: column;
+        gap: 50px;
+        width: 100%;
+        .head{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 5px;
+            .filter{
+                padding:10px;
+                background-color: #eee;
+                border-radius: 8px;
+                display: flex;
+                align-items: center;
+                gap: 20px;
+                button{
+                    padding:10px;
+                    font-size: 15px;
+                    border-radius: 8px;
+                    border: 2px solid white;
+                    cursor: pointer;
+                    transition: 0.5s;
+                    &:active{
+                        transform: scale(0.9);
+                    }
+                    span{
+                        color: var(--Blue-500);
+                    }
+                }
+                button.active{
+                    background-color: white;
+                }
+            }
+        }
+        .contents{
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            font-size: 40px;
+            gap:20px;
+            max-height: 500px; 
+            padding: 5px;
+            overflow-x: auto;
+            .task{
+                background-color: white;
+                padding:20px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                border-radius: 8px;
+                .left{
+                    display: flex;
+                    gap: 10px;
+                    align-items: center;
+                    div.check{
+                        width: 20px;
+                        height: 20px;
+                        border: 1px solid var(--Navy-950);
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        background-color: black;
+                        cursor: pointer;
+                        img{
+                            display: none;
+                            user-select: none;
+                        }
+                        img.show{
+                            display: flex;
+                        }
+                    }
+                    h3{
+                        font-size: 20px;
+                        @media (max-width:768px) {
+                            font-size: 15px;
+                        }
+                    }
+                }
+                img{
+                    display: none;
+                    cursor: pointer;
+                    transition: 0.5s;
+                    &:active{
+                        transform: scale(0.9);
+                    }
+                }
+                &:hover img.delete{
+                    display: inline;
+                }
+            }
+        }
+    }
+}
