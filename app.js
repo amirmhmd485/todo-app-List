@@ -129,7 +129,9 @@ function savetolocalstorage(arr){
     localStorage.setItem("tasks" , JSON.stringify(arr));
 }
 window.addEventListener("load" , function(e){
-    arrOfTasks = JSON.parse(this.localStorage.getItem("tasks"));
-    addTask(arrOfTasks);
+    if(this.localStorage.getItem("tasks")){
+        arrOfTasks = JSON.parse(this.localStorage.getItem("tasks"));
+        addTask(arrOfTasks);
+    }
 })
 // end localstorage
